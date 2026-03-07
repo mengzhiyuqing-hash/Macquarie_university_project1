@@ -1,0 +1,35 @@
+name: mq_university_project
+version: 1.0.0
+config-version: 2
+
+profile: mq_university_project
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+
+models:
+  mq_university_project:
+    raw:
+      +materialized: table
+      +schema: RAW
+
+    staging:
+      +materialized: view
+      +schema: STAGING
+
+    vault:
+      +materialized: incremental
+      +schema: VAULT
+      +on_schema_change: sync_all_columns
+
+    intermediate:
+      +materialized: view
+      +schema: INTERMEDIATE
+
+    marts:
+      +materialized: table
+      +schema: MARTS
+
+    semantic:
+      +materialized: view
+      +schema: SEMANTIC

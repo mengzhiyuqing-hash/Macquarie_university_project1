@@ -1,0 +1,13 @@
+mq_university_project:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "BPHHFIV-OV60781"
+      user: "BAOBAO"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "ACCOUNTADMIN"
+      warehouse: "COMPUTE_WH"
+      database: "SNOWFLAKE_LEARNING_DB"
+      schema: "RAW"
+      threads: 4

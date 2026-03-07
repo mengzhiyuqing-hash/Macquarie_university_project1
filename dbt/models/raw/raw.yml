@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: raw_students
+    columns:
+      - name: student_id
+        tests: [not_null, unique]
+
+  - name: raw_courses
+    columns:
+      - name: course_id
+        tests: [not_null, unique]
+
+  - name: raw_terms
+    columns:
+      - name: term_id
+        tests: [not_null, unique]
+
+  - name: raw_enrollments
+    columns:
+      - name: enrollment_id
+        tests: [not_null, unique]
+      - name: student_id
+        tests: [not_null]
+      - name: course_id
+        tests: [not_null]
+      - name: term_id
+        tests: [not_null]
