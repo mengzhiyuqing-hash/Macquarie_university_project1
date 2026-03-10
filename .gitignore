@@ -1,2 +1,13 @@
+# Python virtual environments
+.venv/
+**/.venv/
+
+# dbt artifacts
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+
+# local secrets
 .env
 **/.env
+dbt/.env

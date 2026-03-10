@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_students
+    columns:
+      - name: student_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_courses
+    columns:
+      - name: course_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_terms
+    columns:
+      - name: term_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_enrollments
+    columns:
+      - name: enrollment_id
+        tests:
+          - not_null
+          - unique
+      - name: student_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_students')
+              field: student_id
+      - name: course_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_courses')
+              field: course_id
+      - name: term_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_terms')
+              field: term_id
+      - name: grade
+        tests:
+          - accepted_values:
+              values: ['HD', 'D', 'C', 'P', 'F']
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['active', 'completed', 'withdrawn']
